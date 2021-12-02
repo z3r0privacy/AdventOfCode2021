@@ -1,4 +1,4 @@
-from aoc2021.day01 import Day01
+from aoc2021 import *
 
 def print_day(d):
     print(f"################## Day {d.Day} ##################")
@@ -8,13 +8,13 @@ def print_day(d):
     print()
 
 def main():
-    days = [Day01()]
+    days = [Day01(), Day02()]
 
     for d in days:
         if d.Done:
             continue
         print_day(d)
-        
+
     for d in days:
         if not d.Done:
             continue
