@@ -8,7 +8,15 @@ def print_day(d):
     print()
 
 def main():
-    days = [Day01(), Day02()]
+    days = []
+    module = __import__("aoc2021")
+    for i in range(1,26):
+        name = f"Day{i:02d}"
+        try:
+            cl = getattr(module, name)
+            days.append(cl())
+        except AttributeError:
+            """Day not (yet) implemented"""
 
     for d in days:
         if d.Done:
