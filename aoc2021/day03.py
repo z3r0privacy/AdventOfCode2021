@@ -5,7 +5,7 @@ class Day03:
 
     def __init__(self):
         self._day = "03"
-        self._isdone = False
+        self._isdone = True
         self.lines = read_file_lines(self.Day)
 
     @property
