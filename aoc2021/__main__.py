@@ -23,6 +23,9 @@ def main():
             continue
         print_day(d)
 
+    if any(not d.Done for d in days):
+        exit()
+
     for d in days:
         if not d.Done:
             continue
