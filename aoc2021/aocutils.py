@@ -1,5 +1,10 @@
 import os
 
+def read_file(day):
+    path = os.path.join("Inputs", f"{day}.txt")
+    with open(path, "r") as f:
+        return f.read()
+
 def read_file_lines(day):
     path = os.path.join("Inputs", f"{day}.txt")
     with open(path, "r") as f:
