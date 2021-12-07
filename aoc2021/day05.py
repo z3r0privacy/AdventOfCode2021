@@ -5,7 +5,7 @@ class Day05:
 
     def __init__(self):
         self._day = "05"
-        self._isdone = False
+        self._isdone = True
         self.lines = read_file_lines(self.Day)
         self.rgx = re.compile(r"(?P<x1>\d+),(?P<y1>\d+) -> (?P<x2>\d+),(?P<y2>\d+)")
 
