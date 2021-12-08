@@ -1,9 +1,16 @@
 from aoc2021 import *
+from datetime import date, datetime
 
 def print_day(d):
+    start = datetime.now()
+    s1 = d.solve_1()
+    mid = datetime.now()
+    s2 = d.solve_2()
+    dur2 = datetime.now() - mid
+    dur1 = mid - start
     print(f"################## Day {d.Day} ##################")
-    print(f"# Solution 1: {d.solve_1()}")
-    print(f"# Solution 2: {d.solve_2()}")
+    print(f"# ({dur1}) Solution 1: {s1}")
+    print(f"# ({dur2}) Solution 2: {s2}")
     print("############################################")
     print()
 
