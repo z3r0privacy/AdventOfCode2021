@@ -7,7 +7,7 @@ class Day09:
 
     def __init__(self):
         self._day = "09"
-        self._isdone = False
+        self._isdone = True
         self.heights = [[int(n) for n in l if n] for l in read_file_lines(self.Day) if l]
 
     @property
