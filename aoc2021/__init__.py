@@ -12,3 +12,4 @@ from aoc2021.day11 import Day11
 from aoc2021.day12 import Day12
 from aoc2021.day13 import Day13
 from aoc2021.day14 import Day14
+from aoc2021.day15 import Day15

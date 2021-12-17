@@ -17,7 +17,7 @@ class Day14:
         return self._isdone
 
     def _prepare(self):
-        template = list(self.lines[0])
+        template = self.lines[0]
         rules = {}
         counts = {}
         for rule in self.lines[2:]:
@@ -28,21 +28,6 @@ class Day14:
             counts[c] = 1
         return template, rules, counts
 
-    def solve_1(self):
-        tpl, rules, counts = self._prepare()
-        for i in range(10):
-            tba = []
-            _tpl = "".join(tpl)
-            for i in range(len(tpl)-1):
-                tba.append(rules[_tpl[i:i+2]])
-            idx = 1
-            for c in tba:
-                tpl.insert(idx, c)
-                idx += 2
-                counts[c] += 1
-        return max(counts.values()) - min(counts.values())
-        
-        
     def _rec_solve(self, pair, rules, remaining):
         if (pair, remaining) in self.cache.keys():
             return self.cache[(pair, remaining)]
@@ -66,12 +51,38 @@ class Day14:
         self.cache[(pair, remaining)] = counts
         return counts
 
+    def solve_1(self):
+        self.cache = {}
+        tpl, rules, counts = self._prepare()
+        for i in range(len(tpl)-1):
+            c1 = self._rec_solve(tpl[i:i+2], rules, 10)
+            for k,v in c1.items():
+                if k in counts.keys():
+                    counts[k] += v
+                else:
+                    counts[k] = v
+        return max(counts.values()) - min(counts.values())
+        # first version
+        """
+        tpl, rules, counts = self._prepare()
+        for i in range(10):
+            tba = []
+            _tpl = "".join(tpl)
+            for i in range(len(tpl)-1):
+                tba.append(rules[_tpl[i:i+2]])
+            idx = 1
+            for c in tba:
+                tpl.insert(idx, c)
+                idx += 2
+                counts[c] += 1
+        return max(counts.values()) - min(counts.values())
+        """
+        
     def solve_2(self):
         self.cache = {}
         tpl, rules, counts = self._prepare()
-        _tpl = "".join(tpl)
         for i in range(len(tpl)-1):
-            c1 = self._rec_solve(_tpl[i:i+2], rules, 40)
+            c1 = self._rec_solve(tpl[i:i+2], rules, 40)
             for k,v in c1.items():
                 if k in counts.keys():
                     counts[k] += v
